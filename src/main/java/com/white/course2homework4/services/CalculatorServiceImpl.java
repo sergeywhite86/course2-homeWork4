@@ -11,26 +11,34 @@ public class CalculatorServiceImpl implements CalculatorService {
 
     @Override
     public String addition(Integer val1, Integer val2) {
+        validation(val1, val2);
         int result = val1 + val2;
         return String.format("%d + %d = %d", val1, val2, result);
     }
 
     @Override
     public String subtraction(Integer val1, Integer val2) {
+        validation(val1, val2);
         int result = val1 - val2;
-        return String.format("%d - %d = %d",val1,val2,result);
+        return String.format("%d - %d = %d", val1, val2, result);
     }
 
     @Override
     public String multiplication(Integer val1, Integer val2) {
+        validation(val1, val2);
         int result = val1 * val2;
-        return String.format("%d * %d = %d",val1,val2,result);
+        return String.format("%d * %d = %d", val1, val2, result);
     }
 
     @Override
     public String division(Integer val1, Integer val2) {
-        if(val2 == 0) throw new ArithmeticException("Делить на ноль нельзя");
+        validation(val1, val2);
+        if (val2 == 0) throw new ArithmeticException("Делить на ноль нельзя");
         double result = (double) val1 / val2;
-        return String.format("%d / %d = %.2f",val1,val2,result);
+        return String.format("%d / %d = %.2f", val1, val2, result);
+    }
+
+    private void validation(Integer val1, Integer val2) {
+        if (val1 == null || val2 == null) throw new IllegalArgumentException("Введены не все числа");
     }
 }
