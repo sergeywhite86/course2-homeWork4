@@ -1,5 +1,6 @@
 package com.white.course2homework4.controllers;
 
+import com.white.course2homework4.services.CalculatorService;
 import com.white.course2homework4.services.CalculatorServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/calculator")
 public class CalculatorController {
 
-    private final CalculatorServiceImpl service;
+    private final CalculatorService service;
 
     public CalculatorController(CalculatorServiceImpl service) {
         this.service = service;
